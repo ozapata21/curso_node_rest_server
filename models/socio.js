@@ -12,7 +12,7 @@ const SocioSchema = Schema({
     },
     calle: {
         type: String,
-        required: [true, 'La calle es obligatoio']
+        required: [true, 'La calle es obligatoia']
     },
     numeroExt: {
         type: String,
@@ -21,14 +21,73 @@ const SocioSchema = Schema({
     numeroInt: {
         type: String
     },
-    activo: {
-        type: Boolean,
-        default: true
+    colonia: {
+        type: String
+    },
+    localidad: {
+        type: String,
+        required: [true, 'La localidad es obligatoria']
+    },
+    municipio: {
+        type: Schema.Types.ObjectId,
+        ref: 'Municipio',
+        required:true  
+    },
+    estado: {
+        type: Schema.Types.ObjectId,
+        ref: 'Estado',
+        required:true  
+    },
+    pais: {
+        type: Schema.Types.ObjectId,
+        ref: 'Pais',
+        required:true  
     },
     correo: {
         type: String,
         required: [true, 'El correo es obligatoio'],
-        unique: true
+    },
+    telefono: {
+        type: String
+    },
+    cp: {
+        type: String
+    },
+    canalDist: {
+        type: Schema.Types.ObjectId,
+        ref: 'Canal'
+    },
+    grupoCliente: {
+        type: Schema.Types.ObjectId,
+        ref: 'GrupoCliente'
+    },
+    vendedor: {
+        type: Schema.Types.ObjectId,
+        ref: 'Vendedor'
+    },
+    condicionPago: {
+        type: Number,
+    },
+    cuentasBancarias: [{
+        banco: {
+            type: String
+        },
+        cuenta: {
+            type: String
+        }
+    }],
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required:true  
+    },
+    fechaMod: {
+        type: Date,
+        default: Date.now
+    },
+    activo: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -38,5 +97,5 @@ SocioSchema.methods.toJSON = function(){
     return socio;
 }
 
-
 module.exports = model('Socio', SocioSchema);
+

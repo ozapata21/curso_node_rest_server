@@ -9,7 +9,6 @@ const generarJWT = ( uid = '' ) => {
             expiresIn:'4h'
         }, (err,token) =>{
             if(err) {
-                console.log(err);
                 reject('Nose pudo generar el jwt');
             } else {
                 resolve(token);

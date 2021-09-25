@@ -1,7 +1,7 @@
 
 const { response } = require('express');
 const jwt = require('jsonwebtoken');
-const { usuariosDelete } = require('../controllers/user');
+const { usuariosDelete } = require('../controllers/usuarios');
 const usuario = require('../models/usuario');
 const Usuario = require('../models/usuario');
 
@@ -18,6 +18,7 @@ const validarJWT = async (req, res=response, next) => {
 
         // req.uid = uid;
         const usuario = await Usuario.findById(uid);
+        
 
         if(!usuario){
             return res.status(401).json({
@@ -33,10 +34,11 @@ const validarJWT = async (req, res=response, next) => {
 
         req.usuario = usuario;
 
+        // console.log(req.usuario);
+
         next();
 
     } catch (error) {
-        console.log(error);
         res.status(401).json({
             msg:'Token no valido'
         })

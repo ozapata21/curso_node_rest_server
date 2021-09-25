@@ -8,8 +8,6 @@ const dbConection = async()=>{
 
         });
 
-        console.log('Base de datos on line');
-
     } catch (error) {
         console.log(error);
         throw new Error('Error en la conecion');
