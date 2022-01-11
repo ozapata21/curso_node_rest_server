@@ -18,7 +18,9 @@ const {
 } = require('../models'); 
 
 const esRoleValido = async(rol='') => {
+    console.log(rol);
     const existeRol = await Role.findOne({rol});
+    console.log(existeRol);
     if (!existeRol){
         throw new Error(`El rol ${ rol } no esta registrado en la base de datos`)
     }
@@ -27,7 +29,7 @@ const esRoleValido = async(rol='') => {
 const existeEmail = async(correo ='') => {
     const existe = await Usuario.findOne({correo})
     if(existe){
-        throw new Error(`El correo ${ correo } ya existe`)
+        throw new Error(`El correo: ${ correo } ya existe`)
     }
 }
 
@@ -93,12 +95,7 @@ const existeOrderPorId = async( id ) => {
         throw new Error(`No existe id de la orden ${id}`);
     }
 }
-const existeVendedorPorId = async( id ) => {
-    const existeVendedor = await Vendedore.findById( id );
-    if( !existeVendedor ){
-        throw new Error(`No existe id del vendedor ${id}`);
-    }
-}
+
 
 const existeCanalDistPorId = async( id ) => {
     const existeCanalDist = await CanalDist.findById( id );
@@ -107,17 +104,17 @@ const existeCanalDistPorId = async( id ) => {
     }
 }
 
+const existeClasePedidoPorId = async( id ) => {
+    const existeClasePedido = await ClasePedido.findById( id );
+    if( !existeClasePedido ){
+        throw new Error(`No existe id de la clase de pedido ${id}`);
+    }
+}
 
 const existeGrupoClientePorId = async( id ) => {
     const existeGrupoCliente = await GrupoCliente.findById( id );
     if( !existeGrupoCliente ){
         throw new Error(`No existe id del grupo de cliente de dist ${id}`);
-    }
-}
-const existeClasePedidoPorId = async( id ) => {
-    const existeClasePedido = await ClasePedido.findById( id );
-    if( !existeClasePedido ){
-        throw new Error(`No existe id de la clase de pedido ${id}`);
     }
 }
 const existeOrgVentaPorId = async( id ) => {
@@ -126,10 +123,23 @@ const existeOrgVentaPorId = async( id ) => {
         throw new Error(`No existe la organizacion de ventas ${id}`);
     }
 }
+const existeRolePorId = async( id ) => {
+    const existeRol = await Role.findById( id );
+    if( !existeRol ){
+        throw new Error(`No existe id del Rol: ${id}`);
+    }
+}
 const existeSectorePorId = async( id ) => {
     const existeSectore = await Sectore.findById( id );
     if( !existeSectore ){
         throw new Error(`No existe id del sector ${id}`);
+    }
+}
+
+const existeVendedorPorId = async( id ) => {
+    const existeVendedor = await Vendedore.findById( id );
+    if( !existeVendedor ){
+        throw new Error(`No existe id del vendedor ${id}`);
     }
 }
 
@@ -179,24 +189,25 @@ const validaVendedorPorId = async( id ) => {
 
 
 module.exports = {
-    esRoleValido,
-    existeEmail,
-    existeUsuarioPorId,
-    existeRFC,
-    existeCategoriaPorId,
-    existeItemPorId,
-    existeEstadoPorId,
-    existeMunicipioPorId,
-    existePaisPorId,
-    existeSocioPorId,
-    existeOrderPorId,
-    existeVendedorPorId,
+    existeClasePedidoPorId,
     existeCanalDistPorId,
+    existeCategoriaPorId,
+    existeEstadoPorId,
+    existeEmail,
     existeGrupoClientePorId,
+    existeItemPorId,
+    existeMunicipioPorId,
+    existeOrderPorId,
+    existePaisPorId,
+    existeRolePorId,
+    existeRFC,
+    existeSocioPorId,
+    existeUsuarioPorId,
+    esRoleValido,
+    existeVendedorPorId,
     validaCanalPorId,
     validaGrupoClientePorId,
-    validaVendedorPorId,
-    existeClasePedidoPorId,
     existeOrgVentaPorId, 
-    existeSectorePorId
+    existeSectorePorId,
+    validaVendedorPorId
 }

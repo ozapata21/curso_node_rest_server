@@ -39,7 +39,7 @@ const usuariosPut = async(req,res = response)=>{
 }
 
 const usuariosPost = async (req, res = response)=>{
-    
+
     const {nombre, correo, password, rol} = req.body;
 
     const usuario = new Usuario({nombre, correo, password, rol});
@@ -49,8 +49,6 @@ const usuariosPost = async (req, res = response)=>{
     usuario.password = bcryptjs.hashSync(password, salt);
 
     await usuario.save();
-
-    console.log(usuario);
 
     res.json({
         usuario

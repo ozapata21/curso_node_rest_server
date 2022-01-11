@@ -7,7 +7,7 @@ const {
     obtenerOrgVentas, 
     obtenerOrgVenta, 
     actualizarOrgVenta, 
-    borrarOrgVenta } = require('../controllers/orgventas');
+    borrarOrgVenta } = require('../controllers/orgventas.js');
 const { existeOrgVentaPorId } = require('../helpers/db-validators');
 
 const router = Router();

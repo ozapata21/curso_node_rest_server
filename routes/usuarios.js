@@ -5,10 +5,6 @@ const {
     validarCampos, validarJWT, esAdminRol, tienRol
 } = require('../middlewares');
 
-// const { validarCampos } = require('../middlewares/validar-campos');
-// const { esAdminRol, tienRol } = require('../middlewares/validar-roles');
-// const { validarJWT } = require('../middlewares/validar-jwt');
-
 const { esRoleValido, existeEmail, existeUsuarioPorId } = require('../helpers/db-validators');
 
 const {  

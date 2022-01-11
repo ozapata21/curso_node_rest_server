@@ -29,9 +29,9 @@ router.get('/:id', [
 
 router.post('/', [
     validarJWT,
-    check('socio','El nombre es obligatorio').not().isEmpty(),
-    check('socio','No es un id de mongo').isMongoId(),
-    check('socio').custom(existeSocioPorId),
+    check('solicitante','El solicitante es obligatorio').not().isEmpty(),
+    check('solicitante','No es un id de mongo el solicitante').isMongoId(),
+    check('solicitante').custom(existeSocioPorId),
     validarCampos
 ], crearOrder)
 

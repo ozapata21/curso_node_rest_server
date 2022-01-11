@@ -10,12 +10,13 @@ class Server{
             auth:           '/api/auth',
             buscar:         '/api/buscar',
             categorias:     '/api/categorias',
+            canalDists:     '/api/canaldists',
             clasePedidos:   '/api/clasepedidos',
             grupoClientes:  '/api/grupoclientes',
-            canalDists:     '/api/canaldists',
             items:          '/api/items',
             orders:         '/api/orders',
             orgVentas:      '/api/orgventas',
+            roles:          '/api/roles',
             socios:         '/api/socios',
             sector:         '/api/sectores',
             usuarios:       '/api/usuarios',
@@ -59,6 +60,7 @@ class Server{
         this.app.use(this.paths.items,          require('../routes/items'));
         this.app.use(this.paths.orders,         require('../routes/orders'));
         this.app.use(this.paths.orgVentas,      require('../routes/orgventas'));
+        this.app.use(this.paths.roles,          require('../routes/roles'));
         this.app.use(this.paths.socios,         require('../routes/socios'));
         this.app.use(this.paths.sector,         require('../routes/sectores'));
         this.app.use(this.paths.usuarios,       require('../routes/usuarios'));

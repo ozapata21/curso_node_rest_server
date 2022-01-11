@@ -43,6 +43,15 @@ const login = async(req, res = response) => {
     }
 }
 
+const revalidarToken = async(req, res = response)=>{
+
+    const token = await generarJWT( req.usuario.id )
+    const usuario = req.usuario;
+    return res.status(200).json({usuario,token})
+    
+}
+
 module.exports = {
-    login
+    login,
+    revalidarToken
 }

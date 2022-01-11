@@ -8,7 +8,7 @@ const Municipio =       require('./municipio');
 const Order =           require('./order');
 const OrgVenta =        require('./orgventa');
 const Paise =           require('./pais');
-const Rol =             require('./rol');
+const Role =             require('./rol');
 const Socio =           require('./socio');
 const Sectore =         require('./sectore');
 const Usuario =         require('./usuario');
@@ -24,7 +24,7 @@ module.exports = {
     Order,
     OrgVenta,
     Paise,
-    Rol,
+    Role,
     Socio,
     Sectore,
     Usuario,

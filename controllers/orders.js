@@ -9,7 +9,7 @@ const obtenerOrders = async ( req, res = response ) => {
         Order.countDocuments(query),
         Order.find(query)
         .populate('usuario', 'nombre')
-        .populate('socio','nombre')
+        .populate('solicitante','nombre')
         // .populate('orderLine.item','nombre')
         .skip(Number(desde))
         .limit(Number(limite))
@@ -28,13 +28,43 @@ const obtenerOrder = async( req, res = response ) => {
 }
 
 const crearOrder = async ( req, res = response) => {
-    const { socio, orderLine } = req.body;
-    const data = { socio, usuario: req.usuario._id, orderLine } 
+    const { 
+        clasePedido,
+        organizacionVentas,
+        canalDist,
+        sector,
+        solicitante,
+        destinatario,
+        vendedor,
+        oc,
+        fechaSurt,
+        condicionPago,
+        orderLine } = req.body;
+
+        const data = { 
+            clasePedido,
+            organizacionVentas,
+            canalDist,
+            sector,
+            solicitante,
+            destinatario,
+            vendedor,
+            oc,
+            fechaSurt,
+            condicionPago,
+            usuario: req.usuario._id,
+            orderLine };
 
     const order = await new Order(data);
     await order.save();
     res.status(200).json(order);
 }
+
+
+//  item
+//  descripcion
+//  cantidad
+//  precio
 
 const actualizarOrder = async( req, res = response) => {
     const { id } = req.params;

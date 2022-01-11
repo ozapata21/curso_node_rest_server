@@ -1,15 +1,27 @@
 const { response, request } = require("express");
 const { Categoria } = require("../models");
+const { nextSeq, formatId } = require("../helpers/seq");
 
-const obtenerCategorias = async ( req, res = response ) => {
-    const { limite = 5, desde = 0 } = req.query;
-    const query = { activo: true }    
+const obtenerCategorias = async ( req, res = response ) => { 
+    
+    const { filterField = '', filterValue = '', pageSize = 5, pageIndex = 0, sortField='nombre', sortDirection = 'asc' } = req.query;
+    const from = pageSize*pageIndex;
+    
+    let query = {activo: true};
+
+    if(filterField!=''){
+        var regexpFilterValue = new RegExp("^" + filterValue.toUpperCase());
+        query[filterField] = regexpFilterValue;
+    }
+
     const [ total, categorias ] = await Promise.all([
         Categoria.countDocuments(query),
         Categoria.find(query)
         .populate('usuario', 'nombre')
-        .skip(Number(desde))
-        .limit(Number(limite))
+        .skip(Number(from))
+        .limit(Number(pageSize))
+        .sort({[sortField]: sortDirection })
+        .catch(err=>console.log(err))
     ]);
     
     res.json({
@@ -25,6 +37,12 @@ const obtenerCategoria = async( req, res = response ) => {
 }
 
 const crearCategoria = async ( req, res = response) => {
+
+    const seqMD = await nextSeq('categorias'); 
+    console.log(
+        formatId(seqMD.seq.toString(),5)
+    );
+
     nombre = req.body.nombre.toUpperCase();
     const categoriaDB = await Categoria.findOne({ nombre });
     if(categoriaDB){
@@ -34,6 +52,7 @@ const crearCategoria = async ( req, res = response) => {
     } 
 
     const data = {
+        categoria:formatId(seqMD.seq.toString(),5),
         nombre,
         usuario: req.usuario._id
     }

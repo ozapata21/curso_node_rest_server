@@ -1,0 +1,23 @@
+// adda.gongora@grupocmg.com.mx
+// alejandro.ojeda@grupocmg.com.mx
+// mariana.acevedo@grupocmg.com.mx
+// omar.zapata@grupocmg.com.mx
+// victor.chavez@grupocmg.com.mx
+// rosendo.chan@grupocmg.com.mx
+// reyna.quinones@grupocmg.com.mx
+// paloma.geronimo@grupocmg.com.mx
+// mauricio.herrera@grupocmg.com.mx
+// andres.suarez@grupocmg.com.mx
+// marco.garcia@grupocmg.com.mx
+
+// rodrigo.castillo@grupocmg.com.mx
+// daniel.hernandez@grupocmg.com.mx
+// cristina.lara@grupocmg.com.mx
+// daniel.encalada@grupocmg.com.mx
+// marco.perez@grupocmg.com.mx
+// christopher.gamboa@grupocmg.com.mx
+// gustavo.perez@grupocmg.com.mx
+// juan.ciau@grupocmg.com.mx
+// rafael.navarrete@grupocmg.com.mx
+// salvador.trejo@grupocmg.com.mx
+// cesar.kumul@grupocmg.com.mx
